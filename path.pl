@@ -6,16 +6,18 @@ adjacent( d , e ).
 adjacent( e , b ).
 adjacent( d , a ).
 
+
 allowed( V1 , V2 , BL ) :-
   \+ V1 = V2 ,
   \+ memberchk( V1 , BL ) ,
   \+ memberchk( V2 , BL ).
 
+
 % path( Origin , Destiny , Visited , Path ).
 % ==
-% There's a `path` (a list of nodes) from `origin` to `destiny` which does not
-% contain any vertice from the `visited` set.
-
+% There's a `Path` (a list of non repeating nodes containing at least two
+% nodes) from `Origin` to `Destiny` which does not contain any node from the
+% `Visited` set.
 path( Origin , Destiny , Visited , [ Origin , Destiny ] ) :-
 
   adjacent( Origin , Destiny ) ,
@@ -29,4 +31,5 @@ path( Origin , Destiny , Visited , [ Origin | Path ] ) :-
 
   allowed( Origin , Inter , Visited ) ,
 
+  % Find some Path not passing by the Origin or the aready Visited nodes:
   path( Inter , Destiny , [ Origin | Visited ] , Path ).
