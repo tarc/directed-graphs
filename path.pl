@@ -31,5 +31,5 @@ path( Origin , Destiny , Visited , [ Origin | Path ] ) :-
 
   allowed( Origin , Inter , Visited ) ,
 
-  % Find some Path not passing by the Origin or the aready Visited nodes:
+  % Find some Path not passing by the Origin or aready Visited nodes:
   path( Inter , Destiny , [ Origin | Visited ] , Path ).
